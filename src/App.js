@@ -57,12 +57,39 @@ class App extends Component {
   render() { 
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar totalNumber={this.state.cartItems.length}/>
         <Items 
           items={this.state.items}
+          onIncrement={this.increment}
+          onDecrement={this.decrement}
+          toCart={this.addToCart}
         />
       </React.Fragment>
     );
+  }
+
+  increment = (id) => {
+    const items = this.state.items.map(item => {
+      if (item.id === id) 
+        item.value++;
+      return item;
+    });
+    this.setState({ items });
+  }
+
+  decrement = (id) => {
+    const items = this.state.items.map(item => {
+      if ( item.id === id && item.value !== 1 ) 
+        item.value--;
+      return item;
+    });
+    this.setState({ items });
+  }
+
+  addToCart = (id) => {
+    const item = this.state.items.filter(it => it.id === id);
+    const cartItems = [...this.state.cartItems, item[0]];
+    this.setState({cartItems});
   }
 }
 
