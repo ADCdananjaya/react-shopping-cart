@@ -1,25 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './index.css';
+import NavBar from './components/navBar';
+import Items from './components/items';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { 
+    items: [
+      {
+        id: 0,
+        value: 1,
+        name: "Google Pixel 7",
+        price: 210000,
+        url: "https://lifemobile.lk/wp-content/uploads/2022/10/Google-Pixel-7.png"
+      },
+      {
+        id: 1,
+        value: 1,
+        name: "Apple iPhone 12 Mini",
+        price: 180000,
+        url: "https://lifemobile.lk/wp-content/uploads/2020/10/Apple-iPhone-12-Blue.jpg"
+      },
+      {
+        id: 2,
+        value: 1,
+        name: "Apple iPhone SE 2020",
+        price: 19000,
+        url: "https://lifemobile.lk/wp-content/uploads/2020/11/Apple-iPhone-SE-2020.png"
+      },
+      {
+        id: 3,
+        value: 1,
+        name: "Apple iPhone X 64GB",
+        price: 200000,
+        url: "https://lifemobile.lk/wp-content/uploads/2019/04/iphone20x.jpg"
+      },
+      {
+        id: 4,
+        value: 1,
+        name: "Huawei Y5 Lite",
+        price: 19000,
+        url: "https://lifemobile.lk/wp-content/uploads/2019/10/y5-lite-1.jpg"
+      },
+      {
+        id: 5,
+        value: 1,
+        name: "Nokia C01 Plus",
+        price: 25000,
+        url: "https://lifemobile.lk/wp-content/uploads/2021/08/Nokia-C01-Plus-2GB-RAM-16GB.jpg"
+      },
+    ],
+
+    cartItems: [
+
+    ]
+   } 
+  render() { 
+    return (
+      <React.Fragment>
+        <NavBar />
+        <Items 
+          items={this.state.items}
+        />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
